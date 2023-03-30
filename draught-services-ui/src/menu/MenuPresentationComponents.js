@@ -4,6 +4,7 @@ import Markets from '../Components/Markets/Markets';
 import Transactions from '../Components/Transactions/Transactions';
 import Summary from '../Components/SummaryPage/Summary';
 import TransWithAccount from '../Components/Transactions/Transactions_Account';
+import Employees from '../Components/Employees/Employees';
 
 
 const presentationComponents = (props) => {
@@ -26,11 +27,12 @@ const presentationComponents = (props) => {
         },
         {
             title: 'Employees',
-            component: <Accounts/>
+            component: <Employees/>
         },
         {
             title: 'Transactions',
-            component: <Transactions />
+            component: <Transactions />,
+            
         },
   
     ];

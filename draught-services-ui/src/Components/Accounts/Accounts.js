@@ -38,7 +38,7 @@ const AccountTableAttributes = [
 
 
 
-export default function Markets(props) {
+export default function Account(props) {
     const [account, setAccount] = useState([]);
     console.log(`in marketTable routes contains is ${JSON.stringify(account)}`)
 

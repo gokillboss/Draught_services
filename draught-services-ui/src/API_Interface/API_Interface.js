@@ -69,4 +69,9 @@ export default class APIInterface {
         return axiosAgent.get(`accounts/all-accounts`)
     }
 
+
+    async allEmployees(){
+        return axiosAgent.get(`employees/all-employees`)
+    }
+
 }

@@ -201,6 +201,7 @@ export default function MainDraswer({title, user, logoutAction}) {
                                            menuItemTitles={presentationComponents().map(comp => comp.title)}
                     />
                     
+                    
                     <ContainerListItems selectedItem={selectedItem}
                                            onClick={handleSelectedItem}
                                            menuItemTitles={containerComponents().map(comp => comp.title)}
