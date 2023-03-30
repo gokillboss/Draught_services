@@ -82,6 +82,17 @@ accountsRouter.use(VerifyJWT)
 accountsRouter.get('/all-accounts', Authorize('admin'), AccountsController.allAccount, err => console.log(`allAccount ran into an error: ${err}`))
 
 
+
+const EmployeesController = require('../app/Controllers/EmployeesControler');
+const employeesRouter = require('koa-router')({
+    prefix: '/employees'
+})
+
+employeesRouter.use(VerifyJWT)
+employeesRouter.get('/all-employees', Authorize('admin'), EmployeesController.allEmployees, err => console.log(`allEmployees ran into an error: ${err}`))
+
+
+
 /**
  * Register all of the controllers into the default controller.
  */
@@ -91,7 +102,8 @@ router.use(
     routesRouter.routes(),
     marketRouter.routes(),
     transactionsRouter.routes(),
-    accountsRouter.routes()
+    accountsRouter.routes(),
+    employeesRouter.routes()
 );
 
 module.exports = function (app) {

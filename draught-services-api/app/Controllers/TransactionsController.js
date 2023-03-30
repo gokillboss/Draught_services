@@ -72,9 +72,6 @@ const transactionWithCycleID_count = (ctx) => {
 
 
 
-
-
-
 const transactionWithCycleID = (ctx) => {
     return new Promise((resolve, reject) => {
         const query = `
