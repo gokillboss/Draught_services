@@ -5,7 +5,7 @@ export default function Summary(props) {
     return (
         <Fragment>
             <Typography component="div" variant='h3'>
-                Summary here
+                Welcome to Sonoma Sonoma State
             </Typography>
         </Fragment>
     )

@@ -13,7 +13,7 @@ export default function Transactions(props) {
     return (
     <Fragment>
         <TransactionsWithCycleID/>
-        <TransOnCycle/>
+        
     </Fragment>
      
     )

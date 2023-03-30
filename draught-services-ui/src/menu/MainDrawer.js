@@ -1,4 +1,4 @@
-import React, {Fragment, useState} from 'react';
+import React, {Fragment, useEffect, useState} from 'react';
 import { styled, useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
@@ -20,6 +20,7 @@ import ListItemButton from '@mui/material/ListItemButton';
 
 import {presentationComponents, containerComponents}  from './MenuPresentationComponents';
 import Button from "@mui/material/Button";
+import { Collapse } from '@mui/material';
 
 const drawerWidth = 240;
 
@@ -155,13 +156,17 @@ const findSelectedComponent = (selectedItem) => {
 export default function MainDraswer({title, user, logoutAction}) {
     const theme = useTheme();
     const [open, setOpen] = React.useState(false);
+    const [openCollapse, setOpencollapse] = React.useState(false);
     const [selectedItem, setSelectedItem] = useState('Summary');
 
     console.log('in MainDrawer');
 
+
+
     const handleDrawerOpen = () => {
         setOpen(true);
     };
+
 
     const handleDrawerClose = () => {
         setOpen(false);
@@ -169,6 +174,10 @@ export default function MainDraswer({title, user, logoutAction}) {
 
     const handleSelectedItem = (title) => {
         setSelectedItem(title)
+        if(title ==='Transactions'){
+            setOpencollapse(!openCollapse)
+        }
+       
     };
 
     return (
@@ -200,12 +209,16 @@ export default function MainDraswer({title, user, logoutAction}) {
                                            onClick={handleSelectedItem}
                                            menuItemTitles={presentationComponents().map(comp => comp.title)}
                     />
+
+                    <Collapse in={openCollapse} timeout="auto" unmountOnExit>
                     
+                        <ContainerListItems selectedItem={selectedItem}
+                                            onClick={handleSelectedItem}
+                                            menuItemTitles={containerComponents().map(comp => comp.title)}
+                        />
+                    </Collapse>
                     
-                    <ContainerListItems selectedItem={selectedItem}
-                                           onClick={handleSelectedItem}
-                                           menuItemTitles={containerComponents().map(comp => comp.title)}
-                    />
+                   
 
                 </List>
                     

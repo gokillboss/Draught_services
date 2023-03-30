@@ -5,6 +5,8 @@ import Transactions from '../Components/Transactions/Transactions';
 import Summary from '../Components/SummaryPage/Summary';
 import TransWithAccount from '../Components/Transactions/Transactions_Account';
 import Employees from '../Components/Employees/Employees';
+import TransWithMarket from '../Components/Transactions/TransactionOnMarket';
+import TransWithRoute from '../Components/Transactions/TransactionsOnRoute';
 
 
 const presentationComponents = (props) => {
@@ -46,12 +48,12 @@ const containerComponents = (props) => {
             component: <TransWithAccount />
         },
         {
-            title: 'Market',
-            component: <Markets />
+            title: 'Transaction By Market',
+            component: <TransWithMarket />
         },
         {
-            title: 'Route',
-            component: <Markets/>
+            title: 'Transaction By Route',
+            component: <TransWithRoute/>
         }
 
     ];

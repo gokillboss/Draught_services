@@ -12,16 +12,10 @@ import Paper from '@mui/material/Paper';
 
 
 
-const TransRouteTableAttributes = [
-
+const TransMarketTableAttributes = [
     {
-        title: 'Route ID',
-        attributeDBName: 'routeID',
-        align: 'left'
-    },
-    {
-        title: 'Account ID',
-        attributeDBName: 'accountID',
+        title: 'Market ID',
+        attributeDBName: 'marketID',
         align: 'left'
     },
     {
@@ -29,48 +23,51 @@ const TransRouteTableAttributes = [
         attributeDBName: 'transactionID',
         align: 'left'
     },
-   
+    {
+        title: 'Route ID',
+        attributeDBName: 'routeID',
+        align: 'left'
+    },
     {
         title: 'Product ID',
         attributeDBName: 'productID',
         align: 'left'
     }
- 
 ];
 
 
-const routeID = 130029;
+const marketID = 110015;
 const cycleID = 364;
 
 
 
-export default function TransWithRoute(props) {
-    const [transRoute, setTransRoute] = useState([]);
-    console.log(`in marketTable routes contains is ${JSON.stringify(transRoute)}`)
+export default function TransWithMarket(props) {
+    const [transMarket, setTransMarket] = useState([]);
+    console.log(`in marketTable routes contains is ${JSON.stringify(transMarket)}`)
 
     useEffect(() => {
         const api = new API();
-        async function getTransRoute() {
-            const respond = await api.transactionWithCycleID_Rout(cycleID,routeID);
+        async function getTransMarket() {
+            const respond = await api.transactionWithCycleID_Market(cycleID,marketID);
             console.log(`routes from the DB ${JSON.stringify(respond)}`);
-            setTransRoute(respond.data);
+            setTransMarket(respond.data);
         }
 
-        getTransRoute();
+        getTransMarket();
 
     },[])
 
 
-    const TRow = ({routeObject}) => {
+    const TRow = ({marketObject}) => {
         return <TableRow
             sx={{'&:last-child td, &:last-child th': {border: 0}}}
         >
             {
-                TransRouteTableAttributes.map((attr, idx) =>
+                TransMarketTableAttributes.map((attr, idx) =>
                     <TableCell key={idx}
                                align={attr.align}>
                         {
-                            routeObject[attr.attributeDBName]
+                            marketObject[attr.attributeDBName]
                         }
                     </TableCell>)
             }
@@ -80,13 +77,13 @@ export default function TransWithRoute(props) {
 
     return <Fragment>
     {
-        transRoute.length > 0 &&
+        transMarket.length > 0 &&
             <TableContainer component={Paper}>
-                <Table sx={{minWidth: 650}} aria-label="route table">
+                <Table sx={{minWidth: 650}} aria-label="market table">
                     <TableHead>
                         <TableRow>
                             {
-                                TransRouteTableAttributes.map((attr, idx) =>
+                                TransMarketTableAttributes.map((attr, idx) =>
                                     <TableCell  key={idx}
                                                 align={attr.align}>
                                         {attr.title}
@@ -96,8 +93,8 @@ export default function TransWithRoute(props) {
                     </TableHead>
                     <TableBody>
                         {
-                            transRoute.map((route, idx) => (
-                                <TRow routeObject={route} key={idx}/>
+                            transMarket.map((market, idx) => (
+                                <TRow marketObject={market} key={idx}/>
                             ))
                         }
                     </TableBody>
